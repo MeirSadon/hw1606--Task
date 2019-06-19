@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,19 +25,19 @@ namespace hw1606___TaskTime_Exrice_2
             {
                 int time = r.Next(1000, 2000);
                 Thread.Sleep(time);
-                Console.WriteLine($"Thread Id: {Thread.CurrentThread.ManagedThreadId} Wait: {time} miliseconds!");
+                Console.WriteLine($"Thread Id {Thread.CurrentThread.ManagedThreadId}, Wait: {time} miliseconds!");
                 return time;
             });
             t1.Start();
             t2.Start();
 
             //*****  Wait For All Tasks.
-            Task.WaitAll(t1, t2);
+            //Task.WaitAll(t1, t2);
             Console.WriteLine("All Threads As Been Done");
 
             //*****  Wait Just For One Thread.
             Task.WaitAny(t1, t2);
-            Console.WriteLine("One Task Is Over");
+            Console.WriteLine((t1.IsCompleted ? "Task Number 1" : "Task Number 2") + " Is Over!");
         }
     }
 }
